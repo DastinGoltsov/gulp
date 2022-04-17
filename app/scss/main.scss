@@ -1,0 +1,171 @@
+@use "sass:math";
+@import url(https://fonts.googleapis.com/css?family=Montserrat:500,600,700,);
+@import "normalize.scss";
+@import "var.scss";
+@import "modules/swiper.scss";
+
+
+
+// локальные стили шрифтов
+// @import "fonts.scss";
+
+// Подключение иконочных шрифтов
+// @import "icons.scss";
+
+// Шрифт по умолчанию
+$fontFamaly: 'Montserrat';
+$fontSize: 18;
+$mainColor: black;
+$sizeHtml: 14;
+// Максимальный размер полотна
+$maxwidth: 1920;
+// Контейнер
+$MaxCont: 1200;
+// padding у  контейнера
+$paddingContainer: 20;
+// Влючение или отключение адаптива принимает в себя строку "true" или "false"
+$adaptiveHeaderTrue:"true";
+
+
+
+// Миксин автоматичесских отступов у gap
+@mixin AdaptiveGap( $gap, $endValue, $StartValue ) {
+	
+		@if $gap == "gap" & 'gap' {
+		 $Recalc: math.div($endValue, $StartValue) + rem;
+		 $gapResult: calc( #{$Recalc} + (#{$StartValue} - 20) * ((100vw - 320px) / (#{$maxwidth} - 320)));
+
+			gap: $gapResult;
+		 
+	 }
+}
+
+// Паддинги у контейнера
+// !Протестировать в браузере
+@mixin paddibgCont($paddingContainer){
+	.wrapper{
+		padding: 0 Math.div($MarginContainer, $MaxCont ) + rem;
+	}
+}
+
+// Миксин добавления адаптива
+@mixin AdaptiveHeaderTrue($par) {
+	@if $par == "true" {
+		@media (max-width: 767px) {
+			body.lock{
+				overflow: hidden;
+			}
+			.header__body{
+				height: 50px;
+			}
+			.header__logo{
+				width: 40px;
+				height: 40px;
+		
+				.logo{
+					font-size: 15px;
+				}
+			}
+			.header__burger {
+				display: block;
+				position: relative;
+				width: 30px;
+				height: 20px;
+				position: relative;
+				z-index: 3;
+				flex: 0px 0px 0px;
+				}
+				.header__burger::before, 
+				.header__burger::after{
+					content: "";
+					background-color: #fff;
+					position: absolute;
+					width: 100%;
+					height: 3px;
+					left: 0;
+					transition: all 0.3s ease 0s;
+				} 
+				.header__burger::before{
+					top: 0;
+				}
+				.header__burger::after{
+					bottom: 0;
+				}
+				.header__burger span{
+					position: absolute;
+					background-color: #fff;
+					left: 0;
+					width: 100%;
+					height: 3px;
+					top: 9px;
+					transition: all 0.3s ease 0s;
+				}
+		
+				.header__burger.active::before{
+					transform: rotate(45deg);
+					top: 8px;
+				}
+				.header__burger.active::after{
+					transform: rotate(-45deg);
+					bottom: 9px;
+				}
+		
+				.header__burger.active span {
+					transform: scale(0);
+				}
+				// !Стили для меню опционально
+				.header__menu {
+					position: fixed;
+					top: -128%;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					overflow: auto;
+					background-color: #18b5a4;
+					padding: 70px 10px 20px 10px;
+					transition: all 0.3s ease 0s;
+				}
+				.header__menu.active{
+					top: 0;
+				}
+				.header__list{
+					display: block;
+				}
+				.header__list li{
+					margin: 0px 0px 20px 0px;
+				}
+		}
+	}@else if $par == "false"{
+
+	}
+	}
+	
+
+	// Миксины ковертации пикселей
+@function rem($rm) {
+	@return Math.div($rm, $sizeHtml )  
+}
+
+@function em($em) {
+	@return Math.div($em, $sizeHtml )  
+}
+
+////////////////!Подключение страниц////////////////////
+
+@import "global.scss";
+
+
+.wrapper{
+	max-width: $MaxCont  + px;
+}
+
+body{
+	font-family: fontFamaly, $ff;
+	font-size:calc($fontSize / $sizeHtml) + rem;
+
+}
+
+html{
+	font-size:$sizeHtml + px;
+	color: $mainColor;
+}
