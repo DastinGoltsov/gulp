@@ -39,6 +39,14 @@ $adaptiveHeaderTrue:"true";
 		 
 	 }
 }
+@mixin AdaptiveMarginTop( $gap, $StartValue,  $endValue, $maxwidth, $minWidth ){
+	@if $gap == "margin-top" {
+		$gapResult: calc( #{$endValue + px} + (#{$StartValue,} - #{$endValue}) * ((100vw - #{$minWidth+ px} ) / (#{$maxwidth} - #{$minWidth})));
+		margin-top: $gapResult;
+		
+	 }
+	 
+}
 
 // Паддинги у контейнера
 // !Протестировать в браузере
