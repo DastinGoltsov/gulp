@@ -16,7 +16,7 @@
 $fontFamaly: 'Montserrat';
 $fontSize: 18;
 $mainColor: black;
-$sizeHtml: 14;
+$sizeHtml: 16;
 // Максимальный размер полотна
 $maxwidth: 1920;
 // Контейнер
@@ -151,11 +151,12 @@ $adaptiveHeaderTrue:"true";
 
 	// Миксины ковертации пикселей
 @function rem($rm) {
-	@return Math.div($rm, $sizeHtml )  
+	@return calc($rm / $sizeHtml ) + rem 
+	
 }
 
 @function em($em) {
-	@return Math.div($em, $sizeHtml )  
+	@return calc($em / $sizeHtml ) + em  
 }
 
 ////////////////!Подключение страниц////////////////////
