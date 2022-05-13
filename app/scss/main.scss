@@ -40,12 +40,62 @@ $adaptiveHeaderTrue:"true";
 	 }
 }
 @mixin AdaptiveMarginTop( $gap, $StartValue,  $endValue, $maxwidth, $minWidth ){
+
+	$px: $endValue + px;
 	@if $gap == "margin-top" {
-		$gapResult: calc( #{$endValue + px} + (#{$StartValue,} - #{$endValue}) * ((100vw - #{$minWidth+ px} ) / (#{$maxwidth} - #{$minWidth})));
+		$gapResult: calc( #{$px} + (#{$StartValue,} - #{$endValue}) * ((100vw - #{$minWidth+ px} ) / (#{$maxwidth} - #{$minWidth})));
 		margin-top: $gapResult;
-		
 	 }
-	 
+
+	 @if $gap == "margin-bottom" {
+		$gapResult: calc( #{$px} + (#{$StartValue,} - #{$endValue}) * ((100vw - #{$minWidth+ px} ) / (#{$maxwidth} - #{$minWidth})));
+		margin-bottom: $gapResult;
+	 }
+
+	 @if $gap == "line-height" {
+		$gapResult: calc( #{$px} + (#{$StartValue,} - #{$endValue}) * ((100vw - #{$minWidth+ px} ) / (#{$maxwidth} - #{$minWidth})));
+		line-height: $gapResult;
+	 }
+
+	 @if $gap == "font-size" {
+		$gapResult: calc( #{$px}  + (#{$StartValue,} - #{$endValue}) * ((100vw - #{$minWidth+ px} ) / (#{$maxwidth} - #{$minWidth})));
+		font-size: $gapResult;
+	 }
+
+	 @if $gap == "height" {
+		$gapResult: calc( #{$px}  + (#{$StartValue,} - #{$endValue}) * ((100vw - #{$minWidth+ px} ) / (#{$maxwidth} - #{$minWidth})));
+		height: $gapResult;
+	 }
+
+	 @if $gap == "width" {
+		$gapResult: calc( #{$px}  + (#{$StartValue,} - #{$endValue}) * ((100vw - #{$minWidth+ px} ) / (#{$maxwidth} - #{$minWidth})));
+		width: $gapResult;
+	 }
+
+	 @if $gap == "max-width" {
+		$gapResult: calc( #{$px} + (#{$StartValue,} - #{$endValue}) * ((100vw - #{$minWidth+ px} ) / (#{$maxwidth} - #{$minWidth})));
+		max-width: $gapResult;
+	 }
+
+	 @if $gap == "min-width" {
+		$gapResult: calc( #{$px} + (#{$StartValue,} - #{$endValue}) * ((100vw - #{$minWidth+ px} ) / (#{$maxwidth} - #{$minWidth})));
+		min-width: $gapResult;
+	 }
+
+	 @if $gap == "margin-right" {
+		$gapResult: calc( #{$px} + (#{$StartValue,} - #{$endValue}) * ((100vw - #{$minWidth+ px} ) / (#{$maxwidth} - #{$minWidth})));
+		margin-right: $gapResult;
+	 }
+
+	 @if $gap == "column-gap" {
+		$gapResult: calc( #{$px} + (#{$StartValue,} - #{$endValue}) * ((100vw - #{$minWidth+ px} ) / (#{$maxwidth} - #{$minWidth})));
+		column-gap: $gapResult;
+	 }
+
+	 @if $gap == "padding-left" {
+		$gapResult: calc( #{$px} + (#{$StartValue,} - #{$endValue}) * ((100vw - #{$minWidth+ px} ) / (#{$maxwidth} - #{$minWidth})));
+		padding-left: $gapResult;
+	 }
 }
 
 // Паддинги у контейнера
