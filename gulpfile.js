@@ -178,7 +178,7 @@ function cleanApp() {
 }
 
 function images() {
-	return src('app/images/all_images/**/*')
+	return src('app/images/**/*')
 		.pipe(webp({
 			quality: 70
 		}))
