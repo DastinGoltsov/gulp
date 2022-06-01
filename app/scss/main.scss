@@ -2,6 +2,7 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat:500,600,700,);
 @import "normalize.scss";
 @import "var.scss";
+@import "fonts.scss";
 @import "modules/swiper.scss";
 
 
@@ -13,16 +14,16 @@
 // @import "icons.scss";
 
 // Шрифт по умолчанию
-$fontFamaly: 'Montserrat';
+$fontFamaly: $gr;
 $fontSize: 18;
 $mainColor: black;
 $sizeHtml: 16;
 // Максимальный размер полотна
 $maxwidth: 1920;
 // Контейнер
-$MaxCont: 1200;
+$MaxCont: 1295;
 // padding у  контейнера
-$paddingContainer: 20;
+$paddingContainer: 30;
 // Влючение или отключение адаптива принимает в себя строку "true" или "false"
 $adaptiveHeaderTrue:"true";
 
@@ -209,6 +210,10 @@ $adaptiveHeaderTrue:"true";
 	@return calc($em / $sizeHtml ) + em  
 }
 
+@include font(Girloy-Bold, 'Girloy-Bold', 700, normal);
+@include font(Girloy-Medium, 'Girloy-Medium', 500, normal);
+@include font(Girloy-Regular, 'Girloy-Bold', 400, normal);
+
 ////////////////!Подключение страниц////////////////////
 
 @import "global.scss";
@@ -219,7 +224,7 @@ $adaptiveHeaderTrue:"true";
 }
 
 body{
-	font-family: fontFamaly, $ff;
+	font-family:$fontFamaly, $ff;
 	font-size:calc($fontSize / $sizeHtml) + rem;
 
 }
